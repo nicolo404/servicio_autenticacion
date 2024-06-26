@@ -1,12 +1,14 @@
 import express from "express";
 import { dbMongoDB } from "./database/dbMongoDB.js"; // Assuming "database" subdirectory
 import rutasUser from "./src/Routes/auth.routes.js"; // Assuming "Routes" subdirectory
+import rutasLocation from "./src/Routes/location.router.js"; // Assuming "Routes" subdirectory
 import { port } from "./src/config.js";
 import cors from "cors";
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use("/api", rutasLocation);
 app.use("/api", rutasUser);
 
 // Connect to MongoDB before starting the server
